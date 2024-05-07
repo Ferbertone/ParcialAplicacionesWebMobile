@@ -2,6 +2,7 @@ package com.example.parcialfernandobertone.Pages
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Button
@@ -32,72 +33,67 @@ fun Login(
     }
     val usuario = "pedro@pe.com.ar"
     val contraseña = "abc123"
-    val nombre = "Predo Pe"
     var usuarioField by remember { mutableStateOf("") }
     var contraseñaField by remember { mutableStateOf("") }
 
-    Column(
-        modifier = Modifier.fillMaxWidth(),
-        horizontalAlignment = Alignment.CenterHorizontally
-    ) {
-        Column (
-            horizontalAlignment = Alignment.CenterHorizontally){
-            Text(
-                text = "Login parcial",
-                color = MaterialTheme.colorScheme.secondary,
-                style = MaterialTheme.typography.titleLarge,
-                modifier = modifier.padding(vertical = 10.dp)
-            )
-            TextField(
-                value = usuarioField,
-                onValueChange = {usuarioField = it},
-                placeholder = { Text(text = "Ingrese su usuario") },
-                modifier = modifier
-                    .padding(top = 10.dp)
-            )
-            TextField(
-                value = contraseñaField,
-                onValueChange = {contraseñaField = it},
-                placeholder = { Text(text = "Ingrese su contraseña") },
-                modifier = modifier
-                    .padding(top = 10.dp)
-            )
-            if (loginExitoso){
-                Button(
-                    onClick = {
-                        if (usuarioField == usuario && contraseñaField == contraseña) {
-                            navController.navigate("Bienvenida")
-                        } else {
-                            loginExitoso = false
-                        }
-                    }
-                ) {
-                    Text(text = "Log In",
-                        modifier = modifier
-                            .padding(top = 10.dp))
-                }
-            }else{
-                Text(
-                    text = "Usuario o contraseña invalidos",
-                    color = MaterialTheme.colorScheme.error,
-                    modifier = modifier
-                        .padding(vertical = 15.dp)
-                )
-                Button(
-                    onClick = {
-                        if (usuarioField == usuario && contraseñaField == contraseña) {
-                            navController.navigate("Bienvenida")
-                        } else {
-                            loginExitoso = false
-                        }
 
+    Column (
+        modifier = Modifier.fillMaxWidth().fillMaxHeight(0.8f),
+        horizontalAlignment = Alignment.CenterHorizontally){
+        Text(
+            text = "Login",
+            color = MaterialTheme.colorScheme.secondary,
+            style = MaterialTheme.typography.titleLarge,
+            modifier = modifier.padding(vertical = 10.dp)
+        )
+        TextField(
+            value = usuarioField,
+            onValueChange = {usuarioField = it},
+            placeholder = { Text(text = "Ingrese su usuario") },
+            modifier = modifier
+                .padding(top = 10.dp)
+        )
+        TextField(
+            value = contraseñaField,
+            onValueChange = {contraseñaField = it},
+            placeholder = { Text(text = "Ingrese su contraseña") },
+            modifier = modifier
+                .padding(top = 10.dp)
+        )
+        if (loginExitoso){
+            Button(
+                modifier = modifier.padding(top = 10.dp),
+                onClick = {
+                    if (usuarioField == usuario && contraseñaField == contraseña) {
+                        navController.navigate("Bienvenida")
+                    } else {
+                        loginExitoso = false
                     }
-                ) {
-                    Text(text = "Login")
                 }
+            ) {
+                Text(text = "Log In",
+                    modifier = modifier)
+            }
+        }else{
+            Text(
+                text = "Usuario o contraseña invalidos",
+                color = MaterialTheme.colorScheme.error,
+                modifier = modifier
+                    .padding(vertical = 15.dp)
+            )
+            Button(
+                onClick = {
+                    if (usuarioField == usuario && contraseñaField == contraseña) {
+                        navController.navigate("Bienvenida")
+                    } else {
+                        loginExitoso = false
+                    }
+
+                }
+            ) {
+                Text(text = "Login")
             }
         }
-
     }
 
 }

@@ -23,7 +23,10 @@ fun Bienvenida(
     Column (
         modifier = Modifier.fillMaxWidth(),
         horizontalAlignment = Alignment.CenterHorizontally) {
-        Column (modifier = modifier.align(Alignment.CenterHorizontally)){
+        Column (
+            modifier = modifier.
+            align(Alignment.CenterHorizontally)
+        ){
             Text(
                 text = "Bienvenida/o",
                 color = MaterialTheme.colorScheme.secondary,
@@ -31,17 +34,16 @@ fun Bienvenida(
                 modifier = modifier.padding(vertical = 10.dp)
             )
             Text(
-                text = "Pedro Pe")
+                text = "Pedro Pe",
+                modifier = modifier.align(Alignment.CenterHorizontally)
+            )
         }
 
         Button(
             modifier = modifier.padding(vertical = 15.dp),
-            onClick = {
-                navController.navigate("Login")
-            }
+            onClick = { navController.navigate("Login") }
         ) {
             Text(text = "Cerrar sesion")
-
         }
     }
 }
