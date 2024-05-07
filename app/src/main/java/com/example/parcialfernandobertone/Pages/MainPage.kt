@@ -47,7 +47,7 @@ fun MainPagePreview() {
 fun MainTopappBar() {
     TopAppBar(
         title = {
-            Text(text = "Esto es el scaffold")
+            Text(text = "Parcial Fernando Bertone")
         },
         colors =  TopAppBarDefaults.topAppBarColors(
             titleContentColor = MaterialTheme.colorScheme.primary,
@@ -61,15 +61,15 @@ fun MainTopappBar() {
 fun MainNavHost(
     navHostController: NavHostController,
     modifier : Modifier = Modifier,
-    startDestination: String = "page1"
+    startDestination: String = "Login"
 ){
     NavHost(
         navController = navHostController,
         modifier = modifier,
-        startDestination = "page1"
+        startDestination = "Login"
     ) {
-        composable("page1") { Page1(navController = navHostController) }
-        composable("page2") { Page2(navController = navHostController) }
+        composable("Login") { Login(navController = navHostController) }
+        composable("Bienvenida") { Bienvenida(navController = navHostController) }
     }
 }
 
